@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f77d6098-a41b-4075-945e-27500ca7117d" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -80,19 +81,19 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\radnja_rhps\images" />
-      <recent name="C:\xampp\htdocs\radnja_rhps\views\admin" />
-      <recent name="C:\xampp\htdocs\radnja_rhps\views" />
-      <recent name="C:\xampp\htdocs\radnja_rhps" />
-      <recent name="C:\xampp\htdocs\fashe-colorlib\views\footer" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\radnja_rhps\images" />
       <recent name="C:\xampp\htdocs\radnja_rhps\views" />
       <recent name="C:\xampp\htdocs\radnja_rhps\modules" />
       <recent name="C:\xampp\htdocs\radnja_rhps" />
       <recent name="C:\xampp\htdocs\radnja_rhps\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\obnavljanje_php\radnja_rhps" />
+      <recent name="C:\xampp\htdocs\radnja_rhps\images" />
+      <recent name="C:\xampp\htdocs\radnja_rhps\views\admin" />
+      <recent name="C:\xampp\htdocs\radnja_rhps\views" />
+      <recent name="C:\xampp\htdocs\radnja_rhps" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -149,7 +150,7 @@
       <workItem from="1550264298051" duration="3483000" />
       <workItem from="1550301189748" duration="7591000" />
       <workItem from="1601059333959" duration="1038000" />
-      <workItem from="1601483947017" duration="791000" />
+      <workItem from="1601483947017" duration="1045000" />
     </task>
     <servers />
   </component>
