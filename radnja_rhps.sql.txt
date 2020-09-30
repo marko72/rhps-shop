@@ -1,0 +1,549 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 09, 2018 at 06:22 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `radnja_rhps`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `akcija`
+--
+
+CREATE TABLE `akcija` (
+  `akcija_id` int(10) NOT NULL,
+  `trajanje` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `naziv_akcije` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `boja`
+--
+
+CREATE TABLE `boja` (
+  `boja_id` int(11) NOT NULL,
+  `naziv` varchar(25) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kategorija`
+--
+
+CREATE TABLE `kategorija` (
+  `kategorija_id` int(10) NOT NULL,
+  `naziv` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kategorija_podkategorija`
+--
+
+CREATE TABLE `kategorija_podkategorija` (
+  `kat_podkat_id` int(10) NOT NULL,
+  `id_kat` int(10) NOT NULL,
+  `id_podkat` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `korisnik`
+--
+
+CREATE TABLE `korisnik` (
+  `korisnik_id` int(10) NOT NULL,
+  `ime` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `prezime` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `datum-registracije` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `slika` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `lozinka` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `kupon_id` int(10) DEFAULT NULL,
+  `uloga_id` int(11) NOT NULL,
+  `id_pol` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `korisnik`
+--
+
+INSERT INTO `korisnik` (`korisnik_id`, `ime`, `prezime`, `email`, `datum-registracije`, `slika`, `lozinka`, `token`, `kupon_id`, `uloga_id`, `id_pol`) VALUES
+(1, 'Marko', 'Radivojevic', 'mradivojevic37@gmail.com', '2018-06-09 15:59:59', 'images/211201marko.jpg', '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', NULL, 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `korisnik_kupon`
+--
+
+CREATE TABLE `korisnik_kupon` (
+  `id_kor_kup` int(10) NOT NULL,
+  `id_korisnik` int(10) NOT NULL,
+  `id_kupon` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `korisnik_proizvod_lajk`
+--
+
+CREATE TABLE `korisnik_proizvod_lajk` (
+  `id_korisnika` int(10) NOT NULL,
+  `id_proizvod` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `korpa`
+--
+
+CREATE TABLE `korpa` (
+  `korpa_id` int(10) NOT NULL,
+  `kupon` tinyint(1) NOT NULL,
+  `otkazano` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `korpa_stavka`
+--
+
+CREATE TABLE `korpa_stavka` (
+  `korpa_stavka_id` int(10) NOT NULL,
+  `id_korpa` int(11) NOT NULL,
+  `id_proizvod` int(11) NOT NULL,
+  `korisnik_id` int(11) NOT NULL,
+  `kolicina` int(2) NOT NULL,
+  `otkazano` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kupon`
+--
+
+CREATE TABLE `kupon` (
+  `kupon_id` int(10) NOT NULL,
+  `trajanje` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `naziv_kupona` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `podkategorija`
+--
+
+CREATE TABLE `podkategorija` (
+  `podkat_id` int(10) NOT NULL,
+  `naziv` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pol`
+--
+
+CREATE TABLE `pol` (
+  `pol_id` int(1) NOT NULL,
+  `naziv` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `pol`
+--
+
+INSERT INTO `pol` (`pol_id`, `naziv`) VALUES
+(1, 'muski'),
+(2, 'zenski');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `proizvod`
+--
+
+CREATE TABLE `proizvod` (
+  `proizvod_id` int(10) NOT NULL,
+  `naziv` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `cena` decimal(10,0) NOT NULL,
+  `stanje` int(5) NOT NULL,
+  `novo` tinyint(1) NOT NULL,
+  `id_kat_podkat` int(10) NOT NULL,
+  `opis` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `id_pro_boj` int(10) NOT NULL,
+  `id_akc_pro` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `proizvod_boja`
+--
+
+CREATE TABLE `proizvod_boja` (
+  `proizvod_boja_id` int(10) NOT NULL,
+  `id_proizvod` int(10) NOT NULL,
+  `id_boja` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `proizvod_velicina`
+--
+
+CREATE TABLE `proizvod_velicina` (
+  `proizvod_velicina_id` int(10) NOT NULL,
+  `id_proizvod` int(10) NOT NULL,
+  `id_velicina` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uloga`
+--
+
+CREATE TABLE `uloga` (
+  `uloga_id` int(10) NOT NULL,
+  `naziv` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `uloga`
+--
+
+INSERT INTO `uloga` (`uloga_id`, `naziv`) VALUES
+(1, 'korisnik'),
+(2, 'administrator');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `velicina`
+--
+
+CREATE TABLE `velicina` (
+  `velicina_id` int(10) NOT NULL,
+  `velicina` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `akcija`
+--
+ALTER TABLE `akcija`
+  ADD PRIMARY KEY (`akcija_id`);
+
+--
+-- Indexes for table `boja`
+--
+ALTER TABLE `boja`
+  ADD PRIMARY KEY (`boja_id`);
+
+--
+-- Indexes for table `kategorija`
+--
+ALTER TABLE `kategorija`
+  ADD PRIMARY KEY (`kategorija_id`);
+
+--
+-- Indexes for table `kategorija_podkategorija`
+--
+ALTER TABLE `kategorija_podkategorija`
+  ADD PRIMARY KEY (`kat_podkat_id`),
+  ADD KEY `id_kat` (`id_kat`),
+  ADD KEY `id_podkat` (`id_podkat`);
+
+--
+-- Indexes for table `korisnik`
+--
+ALTER TABLE `korisnik`
+  ADD PRIMARY KEY (`korisnik_id`),
+  ADD KEY `kupon_id` (`kupon_id`),
+  ADD KEY `uloga_id` (`uloga_id`),
+  ADD KEY `id_pol` (`id_pol`);
+
+--
+-- Indexes for table `korisnik_kupon`
+--
+ALTER TABLE `korisnik_kupon`
+  ADD PRIMARY KEY (`id_kor_kup`),
+  ADD UNIQUE KEY `id_kor_kup` (`id_kor_kup`),
+  ADD KEY `id_korisnik` (`id_korisnik`),
+  ADD KEY `id_kupon` (`id_kupon`);
+
+--
+-- Indexes for table `korisnik_proizvod_lajk`
+--
+ALTER TABLE `korisnik_proizvod_lajk`
+  ADD PRIMARY KEY (`id_korisnika`,`id_proizvod`),
+  ADD KEY `id_proizvod` (`id_proizvod`);
+
+--
+-- Indexes for table `korpa`
+--
+ALTER TABLE `korpa`
+  ADD PRIMARY KEY (`korpa_id`);
+
+--
+-- Indexes for table `korpa_stavka`
+--
+ALTER TABLE `korpa_stavka`
+  ADD PRIMARY KEY (`korpa_stavka_id`),
+  ADD KEY `id_korpa` (`id_korpa`),
+  ADD KEY `id_proizvod` (`id_proizvod`),
+  ADD KEY `korisnik_id` (`korisnik_id`);
+
+--
+-- Indexes for table `kupon`
+--
+ALTER TABLE `kupon`
+  ADD PRIMARY KEY (`kupon_id`);
+
+--
+-- Indexes for table `podkategorija`
+--
+ALTER TABLE `podkategorija`
+  ADD PRIMARY KEY (`podkat_id`);
+
+--
+-- Indexes for table `pol`
+--
+ALTER TABLE `pol`
+  ADD PRIMARY KEY (`pol_id`);
+
+--
+-- Indexes for table `proizvod`
+--
+ALTER TABLE `proizvod`
+  ADD PRIMARY KEY (`proizvod_id`),
+  ADD KEY `id_kat_podkat` (`id_kat_podkat`),
+  ADD KEY `id_pro_boj` (`id_pro_boj`),
+  ADD KEY `id_akc_pro` (`id_akc_pro`);
+
+--
+-- Indexes for table `proizvod_boja`
+--
+ALTER TABLE `proizvod_boja`
+  ADD PRIMARY KEY (`proizvod_boja_id`),
+  ADD KEY `id_proizvod` (`id_proizvod`),
+  ADD KEY `id_boja` (`id_boja`);
+
+--
+-- Indexes for table `proizvod_velicina`
+--
+ALTER TABLE `proizvod_velicina`
+  ADD PRIMARY KEY (`proizvod_velicina_id`),
+  ADD KEY `id_proizvod` (`id_proizvod`),
+  ADD KEY `id_velicina` (`id_velicina`);
+
+--
+-- Indexes for table `uloga`
+--
+ALTER TABLE `uloga`
+  ADD PRIMARY KEY (`uloga_id`);
+
+--
+-- Indexes for table `velicina`
+--
+ALTER TABLE `velicina`
+  ADD PRIMARY KEY (`velicina_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `akcija`
+--
+ALTER TABLE `akcija`
+  MODIFY `akcija_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `boja`
+--
+ALTER TABLE `boja`
+  MODIFY `boja_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `kategorija`
+--
+ALTER TABLE `kategorija`
+  MODIFY `kategorija_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `kategorija_podkategorija`
+--
+ALTER TABLE `kategorija_podkategorija`
+  MODIFY `kat_podkat_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `korisnik`
+--
+ALTER TABLE `korisnik`
+  MODIFY `korisnik_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `korisnik_kupon`
+--
+ALTER TABLE `korisnik_kupon`
+  MODIFY `id_kor_kup` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `korpa`
+--
+ALTER TABLE `korpa`
+  MODIFY `korpa_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `korpa_stavka`
+--
+ALTER TABLE `korpa_stavka`
+  MODIFY `korpa_stavka_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `kupon`
+--
+ALTER TABLE `kupon`
+  MODIFY `kupon_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `podkategorija`
+--
+ALTER TABLE `podkategorija`
+  MODIFY `podkat_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pol`
+--
+ALTER TABLE `pol`
+  MODIFY `pol_id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `proizvod`
+--
+ALTER TABLE `proizvod`
+  MODIFY `proizvod_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `proizvod_boja`
+--
+ALTER TABLE `proizvod_boja`
+  MODIFY `proizvod_boja_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `proizvod_velicina`
+--
+ALTER TABLE `proizvod_velicina`
+  MODIFY `proizvod_velicina_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `uloga`
+--
+ALTER TABLE `uloga`
+  MODIFY `uloga_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `velicina`
+--
+ALTER TABLE `velicina`
+  MODIFY `velicina_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `kategorija_podkategorija`
+--
+ALTER TABLE `kategorija_podkategorija`
+  ADD CONSTRAINT `kategorija_podkategorija_ibfk_1` FOREIGN KEY (`id_kat`) REFERENCES `kategorija` (`kategorija_id`),
+  ADD CONSTRAINT `kategorija_podkategorija_ibfk_2` FOREIGN KEY (`id_podkat`) REFERENCES `podkategorija` (`podkat_id`);
+
+--
+-- Constraints for table `korisnik`
+--
+ALTER TABLE `korisnik`
+  ADD CONSTRAINT `korisnik_ibfk_1` FOREIGN KEY (`uloga_id`) REFERENCES `uloga` (`uloga_id`),
+  ADD CONSTRAINT `korisnik_ibfk_2` FOREIGN KEY (`id_pol`) REFERENCES `pol` (`pol_id`);
+
+--
+-- Constraints for table `korisnik_kupon`
+--
+ALTER TABLE `korisnik_kupon`
+  ADD CONSTRAINT `korisnik_kupon_ibfk_1` FOREIGN KEY (`id_korisnik`) REFERENCES `korisnik` (`korisnik_id`);
+
+--
+-- Constraints for table `korisnik_proizvod_lajk`
+--
+ALTER TABLE `korisnik_proizvod_lajk`
+  ADD CONSTRAINT `korisnik_proizvod_lajk_ibfk_1` FOREIGN KEY (`id_proizvod`) REFERENCES `proizvod` (`proizvod_id`),
+  ADD CONSTRAINT `korisnik_proizvod_lajk_ibfk_2` FOREIGN KEY (`id_korisnika`) REFERENCES `korisnik` (`korisnik_id`);
+
+--
+-- Constraints for table `korpa_stavka`
+--
+ALTER TABLE `korpa_stavka`
+  ADD CONSTRAINT `korpa_stavka_ibfk_1` FOREIGN KEY (`id_korpa`) REFERENCES `korpa` (`korpa_id`),
+  ADD CONSTRAINT `korpa_stavka_ibfk_2` FOREIGN KEY (`korisnik_id`) REFERENCES `korisnik` (`korisnik_id`),
+  ADD CONSTRAINT `korpa_stavka_ibfk_3` FOREIGN KEY (`id_proizvod`) REFERENCES `proizvod` (`proizvod_id`);
+
+--
+-- Constraints for table `proizvod`
+--
+ALTER TABLE `proizvod`
+  ADD CONSTRAINT `proizvod_ibfk_1` FOREIGN KEY (`id_kat_podkat`) REFERENCES `kategorija_podkategorija` (`kat_podkat_id`);
+
+--
+-- Constraints for table `proizvod_boja`
+--
+ALTER TABLE `proizvod_boja`
+  ADD CONSTRAINT `proizvod_boja_ibfk_1` FOREIGN KEY (`id_boja`) REFERENCES `boja` (`boja_id`),
+  ADD CONSTRAINT `proizvod_boja_ibfk_2` FOREIGN KEY (`id_proizvod`) REFERENCES `proizvod` (`proizvod_id`);
+
+--
+-- Constraints for table `proizvod_velicina`
+--
+ALTER TABLE `proizvod_velicina`
+  ADD CONSTRAINT `proizvod_velicina_ibfk_1` FOREIGN KEY (`id_velicina`) REFERENCES `velicina` (`velicina_id`),
+  ADD CONSTRAINT `proizvod_velicina_ibfk_2` FOREIGN KEY (`id_proizvod`) REFERENCES `proizvod` (`proizvod_id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
