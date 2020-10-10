@@ -32,6 +32,10 @@ if(isset($_SESSION['korisnik'])&& $_SESSION['korisnik']->id_uloga=2){
             case "ostalo":
                 include "admin/unosOstalo.php";
                 break;
+            case "tabela-kategorija":
+                $kategorije = executeQuery("SELECT * FROM kategorija");
+                include "admin/tabela-kategorija.php";
+                break;
             case "tabela-ostalo":
                 include "admin/lajkovi-ankete.php";
                 break;

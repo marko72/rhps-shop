@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f77d6098-a41b-4075-945e-27500ca7117d" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/admin/tabela-kategorija.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/unosOstalo1.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/potkategorije.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/potkategorije.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/lajkovi-ankete.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/lajkovi-ankete.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/unosOstalo.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/unosOstalo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unos.php" beforeDir="false" afterPath="$PROJECT_DIR$/unos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/header/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/header/menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index/banner.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/index/banner.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/script.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/script.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,46 +25,15 @@
       <executable />
     </execution>
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="radnja_rhps" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>true</find>
-      <find>aja</find>
-      <find>url</find>
-      <find>btnIzmena</find>
-      <find>korid</find>
-      <find>svi p</find>
-      <find>posa</find>
-      <find>2</find>
-      <find>sess</find>
-      <find>kontakt</find>
-      <find>relate</find>
-      <find>422</find>
-      <find>move</find>
-      <find>sub</find>
-      <find>submi</find>
-      <find>che</find>
-      <find>hidd</find>
-      <find>insertU</find>
-      <find>ubaci</find>
-      <find>ema</find>
-      <find>svi</find>
-      <find>gde</find>
-      <find>aktivan</find>
-      <find>email</find>
-      <find>lajk</find>
-      <find>tabela</find>
-      <find>on(</find>
-      <find>ins</find>
-      <find>bezSli</find>
-      <find>pagi</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -68,7 +48,7 @@
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="item-slick1&#9;null&#9;null&#10;executeQ&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/admin" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -79,18 +59,18 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\radnja_rhps\images" />
-      <recent name="C:\xampp\htdocs\radnja_rhps\views" />
-      <recent name="C:\xampp\htdocs\radnja_rhps\modules" />
-      <recent name="C:\xampp\htdocs\radnja_rhps" />
-      <recent name="C:\xampp\htdocs\radnja_rhps\js" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\obnavljanje_php\radnja_rhps" />
       <recent name="C:\xampp\htdocs\radnja_rhps\images" />
       <recent name="C:\xampp\htdocs\radnja_rhps\views\admin" />
       <recent name="C:\xampp\htdocs\radnja_rhps\views" />
+      <recent name="C:\xampp\htdocs\radnja_rhps" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\obnavljanje_php\radnja_rhps\admin" />
+      <recent name="C:\xampp\htdocs\radnja_rhps\images" />
+      <recent name="C:\xampp\htdocs\radnja_rhps\views" />
+      <recent name="C:\xampp\htdocs\radnja_rhps\modules" />
       <recent name="C:\xampp\htdocs\radnja_rhps" />
     </key>
   </component>
@@ -148,7 +128,9 @@
       <workItem from="1550264298051" duration="3483000" />
       <workItem from="1550301189748" duration="7591000" />
       <workItem from="1601059333959" duration="1038000" />
-      <workItem from="1601483947017" duration="1970000" />
+      <workItem from="1601483947017" duration="6456000" />
+      <workItem from="1601549328682" duration="115000" />
+      <workItem from="1602186671804" duration="30502000" />
     </task>
     <servers />
   </component>
@@ -156,10 +138,26 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1601121455825">
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1601549441156">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601121455825" />
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601549441156" />
+    <state x="604" y="337" key="NewPhpFileDialog" timestamp="1602246273822">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="604" y="337" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1602246273822" />
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1601549429151">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1601549429151" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1602234970483">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1602234970483" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1602252758296">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1602252758296" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

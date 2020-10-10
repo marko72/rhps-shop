@@ -108,6 +108,13 @@
 <?php if((isset($_GET['admin'])&&$_GET['admin']=='user')):?>
     <script src="js/brisanjeKorisnika.js"></script>
 <?php endif;?>
+<?php
+    if((isset($_GET['admin'])&&$_GET['admin']=='tabela-kategorija')):
+?>
+        <script src="js/potkategorije.js"></script>
+<?php
+    endif;
+?>
 <script src="js/main.js"></script>
 </body>
 </html>

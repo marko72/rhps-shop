@@ -30,6 +30,11 @@
                     inner join kategorija k on kp.id_kat=k.kategorija_id 
                     WHERE k.class='muskarci' LIMIT 0,2";
                     $potkategorije = executeQuery($dohvatiPotkategorije);
+                    if(is_null($potkategorije)):
+                ?>
+                    <h3>Nema potkategorija</h3>
+                <?php
+                else:
                     foreach ($potkategorije as $p):
                 ?>
                 <div class="block1 hov-img-zoom pos-relative m-b-30">
@@ -42,7 +47,10 @@
                         </a>
                     </div>
                 </div>
-                <?php endforeach;?>
+                <?php
+                    endforeach;
+                    endif;
+                    ?>
             </div>
 
             <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
@@ -53,8 +61,14 @@
                 inner join kategorija_potkategorija kp on p.potkat_id=kp.id_potkat 
                 inner join kategorija k on kp.id_kat=k.kategorija_id
                 WHERE k.class='zene' LIMIT 0,2";
+
                 $potkategorije = executeQuery($dohvatiPotkategorije);
-                foreach ($potkategorije as $p):
+                if(is_null($potkategorije)):
+                ?>
+                    <h3>Nema potkategorija zene</h3>
+                <?php
+                else:
+                    foreach ($potkategorije as $p):
                 ?>
                 <div class="block1 hov-img-zoom pos-relative m-b-30">
                     <img src="<?=$p->potkat_slika?>" alt="IMG-BENNER">
@@ -66,13 +80,20 @@
                         </a>
                     </div>
                 </div>
-                <?php endforeach;
+                <?php
+                    endforeach;
+                    endif;
                 else:
                 $dohvatiPotkategorije = "SELECT *, kp.slika AS potkat_slika, p.naziv AS p_naziv FROM potkategorija p 
                 inner join kategorija_potkategorija kp on p.potkat_id=kp.id_potkat 
                 inner join kategorija k on kp.id_kat=k.kategorija_id 
                 WHERE k.class='zene' LIMIT 0,1";
                 $potkategorije = executeQuery($dohvatiPotkategorije);
+                if(is_null($potkategorije)):
+                    ?>
+                    <h3>Nema potkategorija zene</h3>
+                <?php
+                else:
                 foreach ($potkategorije as $p):
                     ?>
                     <div class="block1 hov-img-zoom pos-relative m-b-30">
@@ -85,7 +106,10 @@
                             </a>
                         </div>
                     </div>
-                <?php endforeach; endif;?>
+                <?php
+                endforeach;
+                endif;
+                endif;?>
 
                 <!-- block2 -->
                 <?php if(!isset($_SESSION['korisnik'])):?>

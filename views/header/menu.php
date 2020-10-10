@@ -34,6 +34,7 @@
                                 <li><a href="admin.php?admin=products">Svi proizvodi</a></li>
                                 <li><a href="admin.php?admin=unos">Unos proizvoda</a></li>
                                 <li><a href="admin.php?admin=ostalo">Unos/update ostalo</a></li>
+                                <li><a href="admin.php?admin=tabela-kategorija">Kategorije</a></li>
                                 <li><a href="admin.php?admin=tabela-ostalo">Lajkovi/Ankete rezultati</a></li>
                             </ul>
                         </li>
