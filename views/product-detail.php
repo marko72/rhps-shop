@@ -54,8 +54,8 @@
                 <?=$proizvod[0]->p_naziv?>
             </h4>
 
-            <span class="m-text17">
-					<?=$proizvod[0]->cena?>
+            <span class="m-text17 text-info">
+					<?=$proizvod[0]->cena?>.00 $
 				</span>
 
                 <div class="flex-r-m flex-w p-t-10">
@@ -166,9 +166,9 @@
                                 <?=$p->p_naziv?>
                             </a>
 
-                            <span class="block2-price m-text6 p-r-5">
-									<?=$p->cena?>
-								</span>
+                            <span class="block2-price m-text6 p-r-5 text-info">
+                                <?=$p->cena?>.00 $
+                            </span>
                         </div>
                     </div>
                 </div>

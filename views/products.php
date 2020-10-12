@@ -173,7 +173,7 @@
                                                         <?= $pk->p_naziv?>
                                                     </a>
 
-                                                    <span class="block2-price m-text6 p-r-5">
+                                                    <span class="block2-price m-text6 p-r-5 text-info">
                                                         <?= $pk->cena?>.00 $
                                                     </span>
                                                 </div>
