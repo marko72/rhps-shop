@@ -108,7 +108,7 @@ if(isset($_POST['deleteKatPotkat'])){
         $prepare = $konekcija->prepare($queryStr);
         $prepare->bindParam(':id',$idKatPotkat);
         $prepare->execute();
-        if($prepare->rowCount()==1){
+        if($prepare->rowCount() == 1){
             $code = 201;
             $data['message'] = "Uspesno izbrisana potkategorija!";
 //            $queryStr = "SELECT *, k.kategorija_id, p.potkat_id, p.naziv AS potkat_naziv, k.naziv AS kat_naziv, p.class

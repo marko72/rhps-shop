@@ -36,20 +36,7 @@ define("BASE_URL","index.php");
                         </thead>
                         <tbody id="tBodyPotkategorije">
                         <tr>
-                            <td>Potkategorija 1</td>
-                            <td>
-                                <select name="ddlPol" id="ddlPol" class="w-full form-control">
-                                    <option value="0">Izaberite Pol</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select name="ddlKategorije" id="ddlKategorije" class="w-full form-control">
-                                    <option value="0">Izaberite kategoriju</option>
-                                </select>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-danger btn-sm btnDeleteKatPotkat" data-id="0">Obriši</a>
-                            </td>
+                            <td colspan="4">Izbaerite kategoriju za koju zelite prikazati kategorije</td>
                         </tr>
                         </tbody>
                     </table>
@@ -57,15 +44,7 @@ define("BASE_URL","index.php");
             </div>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-10">
-            <a href="#" data-id="1" class="btnExample btn btn-success">EXMPL</a>
-            <a href="#" data-id="2" class="btnExample btn btn-success">EXMPL</a>
-            <a href="#" data-id="3" class="btnExample btn btn-success">EXMPL</a>
-            <a href="#" data-id="4" class="btnExample btn btn-success">EXMPL</a>
-            <a href="#" data-id="5" class="btnExample btn btn-success">EXMPL</a>
-        </div>
-    </div>
+
     <div class="form-gorup bg-light p-4 rounded mb-4">
         <div class="row justify-content-around align-items-baselinene">
             <div class="col-md-3">

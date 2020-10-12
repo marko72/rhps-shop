@@ -178,7 +178,7 @@
                                 $pripremaKategorijaKorisnika->execute();
                                 $rezKat = $kategorijaKorisnika = $pripremaKategorijaKorisnika->fetch();
                             if($rezKat){
-                                echo '<img src="'.$rezKat->slika.'" alt="IMG-BANNER">';
+                                echo '<img src="images/'.$rezKat->slika.'" alt="IMG-BANNER">';
                             }else{
                                 echo "Neuspesno";
                             }

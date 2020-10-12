@@ -3,24 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f77d6098-a41b-4075-945e-27500ca7117d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/unosProizvoda.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/unosProizvoda.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/proizvodi/1600373716insertProduct.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/proizvodi/1600374632browser.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/proizvodi/1600374994browser.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/proizvodi/1600375192KosovaRepubljik.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/proizvodi/1600375341insertProduct.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/proizvodi/1600377206KosovaRepubljik.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/proizvodi/1600377206problemES6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/proizvodi/1600377219KosovaRepubljik.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/proizvodi/1600377219problemES6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/proizvodi/1600377263javaScript.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/proizvodi/problemES6.png1600377050" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/brisanjeProizvoda.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/brisanjeProizvoda.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/tabela-kategorija.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/tabela-kategorija.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/potkategorije.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/potkategorije.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/connection.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/potkategorije.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/potkategorije.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/unosProizvoda.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules/unosProizvoda.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index/banner.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/index/banner.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index/new-product.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/index/new-product.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +125,7 @@
       <workItem from="1601059333959" duration="1038000" />
       <workItem from="1601483947017" duration="6456000" />
       <workItem from="1601549328682" duration="115000" />
-      <workItem from="1602186671804" duration="41435000" />
+      <workItem from="1602186671804" duration="43670000" />
     </task>
     <servers />
   </component>

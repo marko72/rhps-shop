@@ -10,7 +10,7 @@
                 ?>
 
                 <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="<?=$k->slika?>" alt="IMG-BENNER">
+                    <img src="images/<?=$k->slika?>" alt="IMG-BENNER">
 
                     <div class="block1-wrapbtn w-size2">
                         <!-- Button -->
@@ -38,7 +38,7 @@
                     foreach ($potkategorije as $p):
                 ?>
                 <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="<?=$p->potkat_slika?>" alt="IMG-BENNER">
+                    <img src="images/<?=$p->potkat_slika?>" alt="IMG-BENNER">
 
                     <div class="block1-wrapbtn w-size2">
                         <!-- Button -->
@@ -71,7 +71,7 @@
                     foreach ($potkategorije as $p):
                 ?>
                 <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="<?=$p->potkat_slika?>" alt="IMG-BENNER">
+                    <img src="images/<?=$p->potkat_slika?>" alt="IMG-BENNER">
 
                     <div class="block1-wrapbtn w-size2">
                         <!-- Button -->
@@ -97,7 +97,7 @@
                 foreach ($potkategorije as $p):
                     ?>
                     <div class="block1 hov-img-zoom pos-relative m-b-30">
-                        <img src="<?=$p->potkat_slika?>" alt="IMG-BENNER">
+                        <img src="images/<?=$p->potkat_slika?>" alt="IMG-BENNER">
 
                         <div class="block1-wrapbtn w-size2">
                             <!-- Button -->
