@@ -23,6 +23,7 @@
 <script src="js/map-custom.js"></script>
 <!--===============================================================================================-->
 <script src="js/main.js"></script>
+<script src="js/moj-js.js"></script>
 
 </body>
 </html>

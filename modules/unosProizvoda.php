@@ -11,7 +11,7 @@ if(isset($_SESSION['korisnik'])&&($_SESSION['korisnik']->id_uloga==2)){
     $kategorija = 0;
     $potkategorija = 0;
     $akcija = "";
-    $novo = false;
+    $novo = 0;
     $greske = [];
 
     if(isset($_POST['naziv'])){
@@ -58,7 +58,9 @@ if(isset($_SESSION['korisnik'])&&($_SESSION['korisnik']->id_uloga==2)){
     if(isset($_POST['novo'])){
         $novo = $_POST['novo'];
         if($novo=="da"){
-            $novo = true;
+            $novo = 1;
+        }else{
+            $novo = 0;
         }
     }
     $id_kat_potkat =0;
@@ -187,8 +189,8 @@ if(isset($_SESSION['korisnik'])&&($_SESSION['korisnik']->id_uloga==2)){
                             $_SESSION['updateProizvoda']="Uspesno update-ovan proizvod";
                             header("Location: ../admin.php?admin=unos");
                         }else{
-                            echo "Nista nije izmenjeno!";
-                            $_SESSION['greske']= array("Greška prilikom izmene!");
+//                            echo "Nista nije izmenjeno!";
+                            $_SESSION['greske']= array("Ništa nije izmenjeno!");
                             header("Location: ../admin.php?admin=unos");
                         }
                     }catch (PDOException $e){

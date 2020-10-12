@@ -12,12 +12,6 @@
                     <h4 class="m-text14 p-b-7">
                         Categories
                     </h4>
-                    <?php
-                        $dohvatiKategorije = "SELECT * FROM kategorija";
-                        $kategorije = executeQuery($dohvatiKategorije);
-                        foreach ($kategorije as $k):
-                    ?>
-                    <?php endforeach;?>
                     <ul class="p-b-54">
                         <li class="p-t-4 kat">
                             <a href="<?=$_SERVER['PHP_SELF']?>?page=products&pg=1" class="s-text13 active1">

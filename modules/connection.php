@@ -72,7 +72,9 @@ function ispisiMeni($roditelj){
 function prikaziKategorije($idKat){
     global $konekcija;
     $dohvatiPodkategorije ="SELECT *, p.naziv AS p_naziv, k.naziv AS k_naziv, k.class AS k_class, p.class AS p_class 
-FROM kategorija k INNER JOIN kategorija_podkategorija kp ON k.kategorija_id = kp.id_kat INNER JOIN podkategorija p ON kp.id_podkat=p.podkat_id WHERE kp.id_kat=:idKat";
+                            FROM kategorija k INNER JOIN kategorija_potkategorija kp ON k.kategorija_id = kp.id_kat 
+                            INNER JOIN potkategorija p ON kp.id_potkat=p.potkat_id 
+                            WHERE kp.id_kat=:idKat";
     $priprema = $konekcija->prepare($dohvatiPodkategorije);
     $priprema->bindParam(":idKat",$idKat);
     try{
@@ -81,7 +83,7 @@ FROM kategorija k INNER JOIN kategorija_podkategorija kp ON k.kategorija_id = kp
             $podkategorije =$priprema->fetchAll();
             echo '<ul class="padajuci-meni">';
             foreach ($podkategorije as $p) {
-                echo '<li><a href="'.$_SERVER['PHP_SELF']."?page=products&podkat=".$p->id_kat_podkat.'">'.$p->p_naziv.'</a></li>';
+                echo '<li><a href="'.$_SERVER['PHP_SELF']."?page=products&podkat=".$p->id_kat_potkat.'">'.$p->p_naziv.'</a></li>';
             }
             echo "</ul>";
         }else{

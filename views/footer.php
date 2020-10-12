@@ -24,39 +24,25 @@
                 Kategorije
             </h4>
             <ul class="p-b-54">
-                <li class="p-t-4 kat">
+                <li class="p-t-4">
                     <a href="<?=$_SERVER['PHP_SELF']?>?page=products&pg=1" class="s-text13 active1">
                         Svi proizvodi
                     </a>
                 </li>
                 <?php
-                    $dohvatiKategorije = "SELECT * FROM kategorija";
-                    $kategorije = executeQuery($dohvatiKategorije);
-                    foreach ($kategorije as $k):
-                ?>
+                $dohvatiKategorije = "SELECT * FROM kategorija";
+                $kategorije = executeQuery($dohvatiKategorije);
+                foreach ($kategorije as $k):
+                    ?>
                     <li class="p-t-4 kat">
                         <a href="<?=$_SERVER['PHP_SELF']?>?page=products&kat=<?=$k->kategorija_id?>" class="s-text13">
                             <?=$k->naziv?>
                         </a>
-                        <ul>
-                            <?php
-                            $queryStrKatPotkat = "SELECT * FROM kategorija_potkategorija kp 
-                                                    INNER JOIN potkategorija p ON kp.id_potkat = p.potkat_id
-                                                    WHERE kp.id_kat=".$k->kategorija_id;
-                                $potkategorije = executeQuery($queryStrKatPotkat);
-                                foreach ($potkategorije as $p):
-                            ?>
-                                <li class="p-r-5 kat">
-                                    <a href="<?=$_SERVER['PHP_SELF']?>?page=products&podkat=<?=$p->podkat_id?>" class="s-text13">
-                                        <?=$p->naziv?>
-                                    </a>
-                                </li>
-                            <?php endforeach;?>
-                        </ul>
+                        <?php if(isset($_SESSION['korisnik'])):?>
+                            <?php prikaziKategorije($k->kategorija_id);?>
+                        <?php endif;?>
                     </li>
-                <?php
-                    endforeach;
-                ?>
+                <?php endforeach;?>
             </ul>
         </div>
 

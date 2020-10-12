@@ -27,6 +27,7 @@ if(isset($_GET['page'])):
 </script>
 <!--===============================================================================================-->
 <script src="js/main.js"></script>
+<script src="js/moj-js.js"></script>
 <?php if(isset($_GET['page'])) {
     if ($_GET['page'] == 'admin'&&$_GET['admin'] == 'korisnici'):
         ?>
