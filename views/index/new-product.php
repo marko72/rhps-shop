@@ -57,8 +57,8 @@
                                             </a>
 
                                             <span class="block2-price m-text6 p-r-5">
-									<?=$p->cena?>
-								</span>
+									            <?=$p->cena?>.00 $
+								            </span>
                                         </div>
                                     </div>
                                 </div>

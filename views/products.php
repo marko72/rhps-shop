@@ -113,8 +113,8 @@
                                                 </a>
 
                                                 <span class="block2-price m-text6 p-r-5">
-										<?= $pp->cena?>din
-									</span>
+                                                    <?= $pp->cena?>.00 $
+                                                </span>
                                             </div>
                                         </div>
 
@@ -174,8 +174,8 @@
                                                     </a>
 
                                                     <span class="block2-price m-text6 p-r-5">
-										<?= $pk->cena?>din
-									</span>
+                                                        <?= $pk->cena?>.00 $
+                                                    </span>
                                                 </div>
                                             </div>
 
@@ -229,8 +229,8 @@
                                                 </a>
 
                                                 <span class="block2-price m-text6 p-r-5">
-                                            <?= $p->cena?>din
-                                        </span>
+                                                    <?= $p->cena?>.00 $
+                                                </span>
                                             </div>
                                         </div>
 
