@@ -1,7 +1,3 @@
-$(document).on('click','.btnDeleteKatPotkat',function (e) {
-    e.preventDefault()
-    alert($(this).data('id'))
-})
 $(".btnExample").on('click', function (e) {
     e.preventDefault();
     alert($(this).data('id'))
@@ -77,30 +73,30 @@ $("#btnKatPotkat").on('click', function () {
 //     e.preventDefault()
 //     alert($(this).data('id'))
 // })
-// $(".btnDeleteKatPotkat").on('click', function (e) {
-//     e.preventDefault()
-//     alert("Brisanje kategorije potkategorije");
-//     const idKatPotkat = $(this).data('id');
-//
-//     console.log("KAtegorija je: "+idKatPotkat)
-//     $.ajax({
-//         url: "./modules/potkategorije.php",
-//         method: "post",
-//         data: {
-//             sent: true,
-//             deleteKatPotkat: true,
-//             idKatPotkat
-//         },
-//         success: function (data) {
-//             alert("Uspešno izbrisana potkategorija kategorije")
-//             console.log(data)
-//         },
-//         error: function (xhr, status, err) {
-//             alert("Neuspeh pri brisanju potkategorije kategorije")
-//             console.log(xhr)
-//         }
-//     })
-// });
+$(document).on('click','.btnDeleteKatPotkat',function (e) {
+    e.preventDefault()
+    alert("Brisanje kategorije potkategorije");
+    const idKatPotkat = $(this).data('id');
+    console.log($(this))
+    console.log("KAtegorija je: "+idKatPotkat)
+    $.ajax({
+        url: "./modules/potkategorije.php",
+        method: "post",
+        data: {
+            sent: true,
+            deleteKatPotkat: true,
+            idKatPotkat
+        },
+        success: function (data) {
+            alert("Uspešno izbrisana potkategorija kategorije")
+            console.log(data)
+        },
+        error: function (xhr, status, err) {
+            alert("Neuspeh pri brisanju potkategorije kategorije")
+            console.log(xhr)
+        }
+    })
+});
 $("#ddlKategorije").on('change', function () {
     const katID = $(this).val();
     alert(katID);

@@ -13,6 +13,7 @@ if(isset($_SESSION['korisnik'])&&($_SESSION['korisnik']->id_uloga==2)){
     $akcija = "";
     $novo = false;
     $greske = [];
+
     if(isset($_POST['naziv'])){
         $naziv = $_POST['naziv'];
     }else{
@@ -96,10 +97,10 @@ if(isset($_SESSION['korisnik'])&&($_SESSION['korisnik']->id_uloga==2)){
     $bezSlika = '';
     if($_FILES['slika']['tmp_name']!=""){
         $slika1 = $_FILES['slika'];
-        echo "Edituje se sa slikom";   
+        //echo "Edituje se sa slikom";
     }else{
         $bezSlika=1;
-        echo "edituje se bez slika";
+//        echo "edituje se bez slika";
     }
 
     if(isset($_FILES['slika2'])){
@@ -107,73 +108,14 @@ if(isset($_SESSION['korisnik'])&&($_SESSION['korisnik']->id_uloga==2)){
     }else{
         $bezSlika=1;
     }
-    // echo $_FILES['slika']['tmp_name'];
-    // $slika1 = $_FILES['slika'];
-    // echo $_FILES['slika2']['tmp_name'];
 
-    function premestiSliku($slika){
-        global $greske;
-        $maxVelicinaSlike = (2 *1024) *1024;
-
-        if($slika['size']>$maxVelicinaSlike){
-            array_push($greske,"Slika je veca od 2MB");
-            return;
-        }
-        else{
-            $staroMesto = $slika['tmp_name'];
-            $novoMesto = "../images/proizvodi/";
-            $staroIme = $slika['name'];
-            $novoIme = time().$staroIme;
-            $novoMesto = $novoMesto.$novoIme;
-            // move_uploaded_file($staroMesto,$novoMesto);
-            if(!move_uploaded_file($staroMesto,$novoMesto)){
-                //var_dump($dali);
-                array_push($greske,"Neuspesan upload slike");
-                echo "Neuspesan upload slike";
-            }
-            return $novoIme;
-        }
-
-    }
-    $imeSlike1 = premestiSliku($slika1);
-    $imeSlike2 = premestiSliku($slika2);
-    //PARAMETAR unsertUpdate SLUZI DA SE UTVRDI DA LI SE VRSI UNOS ILI IZMENA SLIKE U BAZU, UKOLIKO JE ON JEDNAK 1 TADA SE VRSI IZMENA
-    //U SUPROTNOM SE VRSI INSERT SLIKE
-    function ubaciSlikuUBazu($imeSlike,$id,$insertUpdate=0){
-        global $konekcija;
-        global $greske;
-        $putanja = "images/proizvodi/".$imeSlike;
-        $putanja = $putanja;
-        if($insertUpdate==1){
-            $updateSLike = "UPDATE slika_proizvod SET putanja=:putanja WHERE id_proizvod=:id";
-            $priprema = $konekcija->prepare($updateSLike);
-            echo "update slike";
-        }else{
-            $unosSlike="INSERT INTO slika_proizvod SET id_proizvod=:id, putanja=:putanja";
-            $priprema = $konekcija->prepare($unosSlike);
-            echo "Unos slike";
-        }
-        $priprema->bindParam(":id",$id);
-        $priprema->bindParam(":putanja",$putanja);
-
-        try{
-            $priprema->execute();
-            if(!$priprema->rowCount()){
-                array_push($greske,"Neuspesan upit u bazu");
-                echo "Neuspesan upit u bazu";
-                return false;
-            }
-        }catch (PDOException $e){
-            echo $e->getMessage();
-            array_push($greske,$e->getMessage());
-            return false;
-        }
-        return true;
+    if($bezSlika != 1){
+        $imeSlike1 = premestiSliku($slika1);
+        $imeSlike2 = premestiSliku($slika2);
     }
 
     if(count($greske)==0){
             if(isset($_POST['btnUnosProizvoda'])){
-                echo "pocetak";
                 $unosProizvoda = "INSERT INTO proizvod set naziv=:naziv, cena=:cena, stanje=:stanje, novo=:novo, 
                           id_kat_potkat=:id_kat_potkat, opis=:opis, id_akc_pro=:akcija";
                 $priprema = $konekcija->prepare($unosProizvoda);
@@ -195,37 +137,36 @@ if(isset($_SESSION['korisnik'])&&($_SESSION['korisnik']->id_uloga==2)){
                         $dali = ubaciSlikuUBazu($imeSlike2,$idProizvoda);
                         if(!$dali){
                             $_SESSION['greske']= array("Nije uspesno izvrsen upis slike u bazu!");
-                            echo "Nije uspesno izvrsen upis slike u bazu!";
-                            //header("Location: ../admin.php?admin=unos");
+//                            echo "Nije uspesno izvrsen upis slike u bazu!";
+                            header("Location: ../admin.php?admin=unos");
                         }
                         //PROVERA DA LI JE UNETA DRUGA SLIKA U BAZU
                         $dali1 =ubaciSlikuUBazu($imeSlike1,$idProizvoda);
                         if(!$dali1){
                             $_SESSION['greske']= array("Nije uspesno izvrsen upis slike2 u bazu!");
-                            echo "Nije uspesno izvrsen upis slike u bazu!";
-                            //header("Location: ../admin.php?admin=unos");
+//                            echo "Nije uspesno izvrsen upis slike u bazu!";
+                            header("Location: ../admin.php?admin=unos");
                         }
                         $konekcija->commit();
-                        //header("Location: ../admin.php?admin=unos");
-                        echo "Uspesno uneto";
+                        header("Location: ../admin.php?admin=unos");
+//                        echo "Uspesno uneto";
                     }
                     else{
                         $konekcija->rollBack();
                         $_SESSION['greske']=$greske;
                         array_push($greske,"Taj proizvod vec postoji");
-                        //header("Location: ../admin.php?admin=unos");
-                        echo "Taj proizvod vec postoji";
+                        header("Location: ../admin.php?admin=unos");
+//                        echo "Taj proizvod vec postoji";
                     }
                 }catch (PDOException $e){
-                    echo $e->getMessage();
+//                    echo $e->getMessage();
                     array_push($greske,$e->getMessage());
                     $_SESSION['greske']=$greske;
-                    //header("Location: ../admin.php?admin=unos");
-                    var_dump($_SESSION['greske']);
+                    header("Location: ../admin.php?admin=unos");
+//                    var_dump($_SESSION['greske']);
                 }
             }elseif (isset($_POST['btnIzmenaProizvoda'])){
                 if($bezSlika==1){
-                    echo "<br/>UPDATE BEZ SLIKE<br/>";
                     $idProizvoda = $_POST['idProizvoda'];
                     $updateProizvoda = "UPDATE proizvod SET naziv=:naziv, cena=:cena, stanje=:stanje, novo=:novo, 
                           id_kat_potkat=:id_kat_potkat, opis=:opis, id_akc_pro=:akcija WHERE proizvod_id=:idProizvoda";
@@ -238,31 +179,26 @@ if(isset($_SESSION['korisnik'])&&($_SESSION['korisnik']->id_uloga==2)){
                     $priprema->bindParam(":opis",$opis);
                     $priprema->bindParam(":akcija",$akcija);
                     $priprema->bindParam(":idProizvoda",$idProizvoda);
-
                     try{
                         $priprema->execute();
-                        if($priprema->rowCount()){
+                        echo "Rezultat rowCount-a pri apdejtu bez slike: ";
+                        var_dump($priprema->rowCount());
+                        if ($priprema->rowCount()){
                             $_SESSION['updateProizvoda']="Uspesno update-ovan proizvod";
                             header("Location: ../admin.php?admin=unos");
-                        }
-                        else{
-                            $_SESSION['greske']=$greske;
-                            array_push($greske,"Serverska greska pri update-u");
+                        }else{
+                            echo "Nista nije izmenjeno!";
+                            $_SESSION['greske']= array("Greška prilikom izmene!");
                             header("Location: ../admin.php?admin=unos");
                         }
                     }catch (PDOException $e){
-                        echo $e->getMessage();
-                        array_push($greske,$e->getMessage());
+                        $_SESSION['greske']= array("Greška prilikom izmene!");
                         header("Location: ../admin.php?admin=unos");
                     }
                 }else{
-
-                    echo "<br/>pocetak update<br/>";
                     $idProizvoda = $_POST['idProizvoda'];
                     $updateProizvoda = "UPDATE proizvod SET naziv=:naziv, cena=:cena, stanje=:stanje, novo=:novo, 
                           id_kat_potkat=:id_kat_potkat, opis=:opis, id_akc_pro=:akcija WHERE proizvod_id=:idProizvoda";
-                    echo "UPDATE proizvod SET naziv=$naziv, cena=$cena, stanje=$stanje, novo=$novo, 
-                          id_kat_potkat=$id_kat_potkat, opis=$opis, id_akc_pro=$akcija WHERE proizvod_id=$idProizvoda";
                     $priprema = $konekcija->prepare($updateProizvoda);
                     $priprema->bindParam(":naziv",$naziv);
                     $priprema->bindParam(":cena",$cena);
@@ -275,58 +211,105 @@ if(isset($_SESSION['korisnik'])&&($_SESSION['korisnik']->id_uloga==2)){
 
                     try{
                         $konekcija->beginTransaction();
-                        $priprema->execute();
-                        if($priprema->rowCount()){
-                            $_SESSION['updateProizvoda']="Uspesno update-ovan proizvod";
-                            $dali = ubaciSlikuUBazu($imeSlike2,$idProizvoda,1);
-                            if(!$dali){
-                                $_SESSION['greske']= array("Nije uspesno izvrsen update slike u bazu!");
-                                echo "Nije uspesno izvrsen update slike u bazu!";
-                                //header("Location: ../admin.php?admin=unos");
-                            }
-                            //PROVERA DA LI JE UNETA DRUGA SLIKA U BAZU
-                            $dali1 =ubaciSlikuUBazu($imeSlike1,$idProizvoda,1);
-                            if(!$dali1){
-                                echo "Nije uspesno izvrsen update slike2 u bazu!";
-                                $_SESSION['greske']= array("Nije uspesno izvrsen update slike2 u bazu!");
-                                echo "Nije uspesno izvrsen update slike2 u bazu!";
-                                header("Location: ../admin.php?admin=unos");
-                            }
-                            $konekcija->commit();
-                            // header("Location: ../admin.php?admin=unos");
-                            echo "uspeh";
+                        $rez = $priprema->execute();
+                        $izmenjeno = 0;
+                        $izmenjeno = $priprema->rowCount();
+                        $dali = ubaciSlikuUBazu($imeSlike2,$idProizvoda,1);
+                        if($izmenjeno == 0){
+                            $izmenjeno = $dali;
                         }
-                        else{
+                        $dali1 =ubaciSlikuUBazu($imeSlike1,$idProizvoda,1);
+                        if($izmenjeno == 0){
+                            $izmenjeno = $dali1;
+                        }
+                        if($izmenjeno == 1){
+                            $konekcija->commit();
+                            $_SESSION['updateProizvoda']="Uspesno update-ovan proizvod";
+                            header("Location: ../admin.php?admin=unos");
+                        }else{
                             $konekcija->rollBack();
-                            $_SESSION['greske']=$greske;
-                            array_push($greske,"Serverska greska pri update-u");
-                            //header("Location: ../admin.php?admin=unos");
-                            echo "Serverska greska pri update-u";
+                            $_SESSION['greske'] = "Nista nije izmenjeno";
+                            header("Location: ../admin.php?admin=unos");
                         }
                     }catch (PDOException $e){
-                        echo $e->getMessage();
                         array_push($greske,$e->getMessage());
-                        //header("Location: ../admin.php?admin=unos");
-
+                        $_SESSION['greske'] = "Greška prilikom izmene";
+                        header("Location: ../admin.php?admin=unos");
                     }
                 }
 
             }
                 else{
-
                     $_SESSION['greske']= array("Nije kliknuto na odgovarajuce dugme");
-                    //header("Location: ../admin.php?admin=unos");
-                    echo"Nije kliknuto na odgovarajuce dugme";
+                    header("Location: ../admin.php?admin=unos");
                 }
         }
         else{
-            var_dump($greske);
             $_SESSION['greske']=$greske;
-            //header("Location: ../admin.php?admin=unos");
+            header("Location: ../admin.php?admin=unos");
         }
-
     }
 else{
-   // header("Location: index.php?page=index");
-   echo "nesto je lose";
+    header("Location: index.php?page=index");
+}
+
+function premestiSliku($slika){
+    global $greske;
+    $maxVelicinaSlike = (2 *1024) *1024;
+
+    if($slika['size']>$maxVelicinaSlike){
+        array_push($greske,"Slika je veca od 2MB");
+        return;
+    }
+    else{
+        $staroMesto = $slika['tmp_name'];
+        $novoMesto = "../images/proizvodi/";
+        $staroIme = $slika['name'];
+        $novoIme = time().$staroIme;
+        $novoMesto = $novoMesto.$novoIme;
+        // move_uploaded_file($staroMesto,$novoMesto);
+        if(!move_uploaded_file($staroMesto,$novoMesto)){
+            //var_dump($dali);
+            array_push($greske,"Neuspesan upload slike");
+            echo "Neuspesan upload slike";
+        }
+        return $novoIme;
+    }
+
+}
+//PARAMETAR unsertUpdate SLUZI DA SE UTVRDI DA LI SE VRSI UNOS ILI IZMENA SLIKE U BAZU, UKOLIKO JE ON JEDNAK 1 TADA SE VRSI IZMENA
+//U SUPROTNOM SE VRSI INSERT SLIKE
+function ubaciSlikuUBazu($imeSlike,$id,$insertUpdate=0){
+    global $konekcija;
+    global $greske;
+    $putanja = "images/proizvodi/".$imeSlike;
+    $putanja = $putanja;
+    if($insertUpdate==1){
+        $updateSLike = "UPDATE slika_proizvod SET putanja=:putanja WHERE id_proizvod=:id";
+        $priprema = $konekcija->prepare($updateSLike);
+        echo "update slike";
+    }else{
+        $unosSlike="INSERT INTO slika_proizvod SET id_proizvod=:id, putanja=:putanja";
+        $priprema = $konekcija->prepare($unosSlike);
+        echo "Unos slike";
+    }
+    $priprema->bindParam(":id",$id);
+    $priprema->bindParam(":putanja",$putanja);
+
+    try{
+        $priprema->execute();
+        return $priprema->rowCount();
+//        echo "rowCount izmene slike je: ";
+//        var_dump($priprema->rowCount());
+//        if(!$priprema->rowCount()){
+//            array_push($greske,"Neuspesan upit u bazu");
+//            echo "Neuspesan upit u bazu";
+//            return false;
+//        }
+    }catch (PDOException $e){
+        echo $e->getMessage();
+        array_push($greske,$e->getMessage());
+        return false;
+    }
+    return true;
 }

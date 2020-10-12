@@ -110,7 +110,16 @@ if(isset($_POST['deleteKatPotkat'])){
         $prepare->execute();
         if($prepare->rowCount()==1){
             $code = 201;
-            $data = "Uspesno izbrisana potkategorija!";
+            $data['message'] = "Uspesno izbrisana potkategorija!";
+//            $queryStr = "SELECT *, k.kategorija_id, p.potkat_id, p.naziv AS potkat_naziv, k.naziv AS kat_naziv, p.class
+//                                        FROM kategorija_potkategorija kp
+//                                        INNER JOIN kategorija k ON kp.id_kat = k.kategorija_id
+//                                        INNER JOIN potkategorija p ON kp.id_potkat = p.potkat_id
+//                                        WHERE k.kategorija_id = :katID";
+//            $prepare = $konekcija->prepare($queryStr);
+//            $prepare->bindParam(':katID',$katID);
+//            $prepare->execute();
+//            $potkategorije =$prepare->fetchAll();
         }else{
             $code = 500;
             $data = "Brisanje potkategorije nije uspeo";
